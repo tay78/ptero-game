@@ -41,24 +41,24 @@ yes3Button.style.display ="none";
 let no3Button = document.querySelector('.no3');
 no3Button.style.display ="none";
     
-let choiceAimage = document.querySelector('.choiceAimage');
-    choiceAimage.style.display ="none";
+let cave = document.querySelector('.cave');
+    cave.style.display ="none";
 let ball = document.querySelector('.ball');
     ball.style.display ="none";
-let choiceA1image = document.querySelector('.choiceA1image');
-    choiceA1image.style.display ="none";
-let choiceA2image = document.querySelector('.choiceA2image');
-    choiceA2image.style.display ="none";
-let choiceA3image = document.querySelector('.choiceA3image');
-    choiceA3image.style.display ="none";
-let choiceA4image = document.querySelector('.choiceA4image');
-    choiceA4image.style.display ="none";
-let choiceA5image = document.querySelector('.choiceA5image');
-    choiceA5image.style.display ="none";
-let choiceA6image = document.querySelector('.choiceA6image');
-    choiceA6image.style.display ="none";
-let choiceA7image = document.querySelector('.choiceA7image');
-    choiceA7image.style.display ="none";
+let velociraptor = document.querySelector('.velociraptor');
+    velociraptor.style.display ="none";
+let lake = document.querySelector('.lake');
+    lake.style.display ="none";
+let ground = document.querySelector('.ground');
+    ground.style.display ="none";
+let leaves = document.querySelector('.leaves');
+    leaves.style.display ="none";
+let bugs = document.querySelector('.bugs');
+    bugs.style.display ="none";
+let eggs = document.querySelector('.eggs');
+    eggs.style.display ="none";
+let fish = document.querySelector('.fish');
+    fish.style.display ="none";
 let choiceA8image = document.querySelector('.choiceA8image');
     choiceA8image.style.display ="none";
 let choiceA9image = document.querySelector('.choiceA9image');
@@ -76,7 +76,7 @@ headButton.addEventListener('click', function() {
  trueButton.style.display="block";
  falseButton.style.display="block";
  start.style.display = "none";
- choiceAimage.style.display ="block";
+ choiceA10image.style.display ="block";
  exploreButton.style.display="none";
  headButton.style.display="none";
 });
@@ -84,82 +84,90 @@ restartButton.addEventListener('click', function() {
     foodTime=false;
 text.innerHTML = "You are a Pterodactyl you just woke up from a long sleep and you are very hungry. Do you want to fly to go get food?";
 start.style.display = "block";
-choiceAimage.style.display ="none";
 yesButton.style.display="none";
 noButton.style.display="none";
-exploreButton.style.display="block";
-headButton.style.display="block";
-    choiceA1image.style.display ="none";
-    choiceA2image.style.display ="none";
-    choiceA3image.style.display ="none";
-    choiceA4image.style.display ="none";
-    choiceA5image.style.display ="none";
-    choiceA6image.style.display ="none";
-    choiceA7image.style.display ="none";
+yes2Button.style.display ="none";
+no2Button.style.display ="none";
+yes3Button.style.display ="none";
+no3Button.style.display ="none";
+    lake.style.display ="none";
+    ground.style.display ="none";
+    leaves.style.display ="none";
+     veloceraptor.style.display ="none";
+    bugs.style.display ="none";
+    eggs.style.display ="none";
+    fish.style.display ="none";
+    cave.style.display ="none";
     choiceA8image.style.display ="none";
     choiceA9image.style.display ="none";
     choiceA10image.style.display ="none";
+takeEggsButton.style.display = "none";
+waitButton.style.display="none";
+keepWanderingButton.style.display="none";
+trueButton.style.display ="none";
+falseButton.style.display ="none";
+exploreButton.style.display="block";
+goCaveButton.style.display ="none";
+headButton.style.display="block";
+
 });
 trueButton.addEventListener('click', function(){
     restartButton.style.display="block";
     choiceA3image.style.display ="none";
     headButton.style.display ="none";
     trueButton.style.display ="none";
-    falseButton.style.display ="none";
-    choiceA5image.style.display ="none";
-    choiceA4image.style.display ="none";
+    falseBButton.style.display ="none";
+    choiceA10image.style.display ="none";
     text.innerHTML = "You fly above from nest and see a nearby lake covered with foliage, animals and fish. Click on the lake to stop and eat or keep flying"
-   keepFlying.style.display ="block";
-    choiceA6image.style.display ="block";
+   keepFlying.style.display ="none";
+    lake.style.display ="block";
 
 });
 
 falseButton.addEventListener('click', function(){
     restartButton.style.display="block";
-    choiceA4image.style.display ="none";
     headButton.style.display ="none";
     trueButton.style.display ="none";
     falseButton.style.display ="none";
-    choiceA5image.style.display ="none";
-    choiceA4image.style.display ="none";
-    text.innerHTML = "you fall to the ground as all your ancestors would have before you and are stuck looking for food on the ground."
-    choiceA4image.style.display ="block";
-});
-
-yesButton.addEventListener('click', function(){
-    restartButton.style.display="block";
-    choiceA9image.style.display ="none";
-    fal
-    yesButton.style.display ="none";
-    noButton.style.display ="none";
+    lake.style.display ="none";
     choiceA10image.style.display ="none";
-choiceAimage.style.display ="none";
-choiceA5image.style.display ="none";
-text.innerHTML = "your dragon can not fly through the heavy winds and falls back to the ground and wind up back where you started"
-choiceA10image.style.display ="block";
-
+    text.innerHTML = "you fall to the ground as all your ancestors would have before you and are stuck looking for food on the ground."
+    ground.style.display ="block";
 });
+
+// yesButton.addEventListener('click', function(){
+//     restartButton.style.display="block";
+//     choiceA9image.style.display ="none";
+//     fal
+//     yesButton.style.display ="none";
+//     noButton.style.display ="none";
+//     choiceA10image.style.display ="none";
+// choiceAimage.style.display ="none";
+// choiceA5image.style.display ="none";
+// text.innerHTML = "your dragon can not fly through the heavy winds and falls back to the ground and wind up back where you started"
+// choiceA10image.style.display ="block";
+
+// });
 keepFlying.addEventListener('click', function(){
-    restartButton.style.display="none";
+    restartButton.style.display="block";
     keepFlying.style.display ="none";
     text.innerHTML = "You you eventually get so hungry you are forced to land and starve"
-    choiceA6image.style.display ="block";
 });
 
-pizza.addEventListener("mouseenter", function(){
-    if(foodTime==true){
-    choiceAimage.style.display ="none";
-    restartButton.style.display="block";
-    choiceA1image.style.display ="none";
-        choiceA3image.style.display ="none";
-        choiceA4image.style.display ="none";
-        choiceA5image.style.display ="none";
-    text.innerHTML = "You found food. You make it another day to find your dragon after the storm passes"
-    choiceA2image.style.display ="block";
-    }
-});
+// pizza.addEventListener("mouseenter", function(){
+//     if(foodTime==true){
+//     choiceAimage.style.display ="none";
+//     restartButton.style.display="block";
+//     choiceA1image.style.display ="none";
+//         choiceA3image.style.display ="none";
+//         choiceA4image.style.display ="none";
+//         choiceA5image.style.display ="none";
+//     text.innerHTML = "You found food. You make it another day to find your dragon after the storm passes"
+//     choiceA2image.style.display ="block";
+//     }
+// });
 
-choiceA6image.addEventListener('click', function(){
+lake.addEventListener('click', function(){
     restartButton.style.display="block";
     choiceAimage.style.display ="none";
     choiceA6image.style.display ="none";
@@ -167,19 +175,16 @@ choiceA6image.addEventListener('click', function(){
     text.innerHTML = "you make it to the lake now you have to find something to eat are pterodactyls carnivores or herbivores"
     carnivoreButton.style.display ="block";
     herbivoreButton.style.display ="block";
-    choiceA7image.style.display ="block";
+    choiceA9image.style.display ="block";
 });
 
 carnivoreButton.addEventListener('click', function(){
     restartButton.style.display="block";
     choiceA9image.style.display ="none";
-    choiceA10image.style.display ="none";
+    lake.style.display ="none";
     carnivoreButton.style.display ="none";
     herbivoreButton.style.display ="none";
-    choiceA5image.style.display ="none";
-    choiceA4image.style.display ="none";
     text.innerHTML = "you are correct and dive down grabbing 3 fish to eat satisfying your hunger and making it another day"
-    choiceA9image.style.display ="block";
 });
 
 herbivoreButton.addEventListener('click', function(){
@@ -188,33 +193,33 @@ herbivoreButton.addEventListener('click', function(){
     carnivoreButton.style.display ="none";
     herbivoreButton.style.display ="none";
     choiceA10image.style.display ="none";
-choiceAimage.style.display ="none";
-choiceA5image.style.display ="none";
+lake.style.display ="none";
 text.innerHTML = "you try to eat some leaves but you can't fully digest them and it doesn't satisfy your hunger"
-choiceA10image.style.display ="block";
+leaves.style.display ="block";
 
 });
 exploreButton.addEventListener("click", function(){
-    restartButton.style.display="none";
+    restartButton.style.display="block";
     start.style.display = "none";
+
     exploreButton.style.display="none";
 headButton.style.display="none";
     text.innerHTML = "you dont want to fly and decide to explore the land you see a cave that might have some food do you go inside or keep wandering"
     goCaveButton.style.display ="block";
     keepWanderingButton.style.display ="block";
-    choiceA3image.style.display ="block";
+    cave.style.display ="block";
 });
 goCaveButton.addEventListener("click", function(){
     restartButton.style.display="none";
     start.style.display = "none";
     exploreButton.style.display="none";
-headButton.style.display="none";
+cave.style.display="none";
     text.innerHTML = "you go inside the cave and find some big bugs scurrying around the walls. Do Pterodactyls eat bugs?"
     goCaveButton.style.display ="none";
     keepWanderingButton.style.display ="none";
 yes2Button.style.display ="block";
 no2Button.style.display ="block";
-    choiceA3image.style.display ="block";
+    bugs.style.display ="block";
 });
 yes2Button.addEventListener('click', function(){
 
@@ -224,45 +229,62 @@ goCaveButton.style.display ="none";
 keepWanderingButton.style.display ="none";
 yes2Button.style.display ="none";
 no2Button.style.display ="none";
-choiceA3image.style.display ="none";
-choiceA2image.style.display ="block";
+cave.style.display ="none";
+bugs.style.display ="block";
 });
 keepWanderingButton.addEventListener("click", function(){
-    restartButton.style.display="none";
-    start.style.display = "none";
-    exploreButton.style.display="none";
+    restartButton.style.display="block";
+    takeEggsButton.style.display = "block";
+    waitButton.style.display="block";
 headButton.style.display="none";
     text.innerHTML = "you dont want to go in the cave and decide to explore the land you find a nest of eggs do you take them immediately or see if the parents are nearby"
     goCaveButton.style.display ="none";
+    cave.style.display ="none";
     keepWanderingButton.style.display ="none";
-    choiceA3image.style.display ="block";
+    eggs.style.display ="block";
 });
 takeEggsButton.addEventListener('click', function(){
-    restartButton.style.display="none";
-    start.style.display = "none";
+    restartButton.style.display="block";
+    takeEggsButton.style.display = "none";
     exploreButton.style.display="none";
 headButton.style.display="none";
     text.innerHTML = "you take the eggs and quickly run but you suddenly hear a veloceraptor screeching behind you. Are Velociraptors fast?"
     yes3Button.style.display ="block";
+    eggs.style.display ="none";
     no3Button.style.display ="block";
-    choiceA3image.style.display ="none";
-    choiceA8image.style.display ="block";
+    waitButton.style.display ="none";
+    velociraptor.style.display ="block";
+});
+waitButton.addEventListener('click', function(){
+    restartButton.style.display="block";
+    takeEggsButton.style.display = "none";
+    eggs.style.display ="none";
+    exploreButton.style.display="none";
+headButton.style.display="none";
+    text.innerHTML = "you look around and see the velociraptor parent once they leave you swoop in and take the eggs safely and bring them back to your nest to enjoy"
+    yes3Button.style.display ="none";
+    no3Button.style.display ="none";
+    waitButton.style.display ="none";
+    velociraptor.style.display ="block";
 });
 yes3Button.addEventListener('click', function(){
-    restartButton.style.display="none";
-    start.style.display = "none";
+    restartButton.style.display="block";
+    velociraptor.style.display = "none";
     exploreButton.style.display="none";
 headButton.style.display="none";
     text.innerHTML = "you quickly fly away as fast as you can from the velociraptor reach and get back to your nest safely with the eggs"
-    choiceA1image.style.display ="block";
+    yes3Button.style.display ="none";
+     no3Button.style.display ="none";
+     velociraptor.style.display ="none";
 });
 no3Button.addEventListener('click', function(){
-    restartButton.style.display="none";
-    start.style.display = "none";
+    restartButton.style.display="block";
+    velociraptor.style.display = "none";
     exploreButton.style.display="none";
 headButton.style.display="none";
+        yes3Button.style.display ="none";
+        no3Button.style.display ="none";
     text.innerHTML = "you underestimate the speed of the velociraptor and it catches you and you succumb a a velociraptor attack"
-    choiceA8image.style.display ="block";
 });
 
 // document.addEventListener('keydown', function(event) {
