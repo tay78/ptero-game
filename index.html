@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="main">
-    <h1>Dragon Finder</h1>
+    <h1>Your Pterodactyl Adventure</h1>
     
     <img class="startSubway" src="Untitled393_20260602152040.png" />
     <img class="cave" src="Pan's_cave.jpg" />
@@ -18,6 +18,7 @@
     <img class="bugs" src="bugs.jpg" />
     <img class="eggs" src="egg.jpeg" />
     <img class="velociraptor" src="velociraptor.png" />
+    <img class="collapse" src="images.jpeg" />
     <img class="choiceA8image" src="Untitled393_20260602152040.png" />
     <img class="choiceA9image" src="Untitled393_20260602152040.png" />
     <img class="choiceA10image" src="Untitled393_20260602152040.png" />
@@ -25,42 +26,565 @@
      You are a Pterodactyl you just woke up from a long sleep and you are very hungry. Do you want to fly to go get food?
     </p>
     <button class="head-button"> You go fly to find some food</button>
-    <br>
+    
     <button class="explore-button">You stay by your nest to try to find food.</button>
-    <br>
-    <button class="restart"> restart</button>
-    <br>
+    <button class="win"> You won click to continue</button>
+    <button class="youWin2"> You won click to continue</button>
+      <button class="youWin3"> You won click to continue</button> 
     <button class="yes"> yes</button>
-    <br>
+    
     <button class="no"> no</button>
         <button class="true"> true</button>
-    <br>
     <button class="false"> false</button>
-        <br>
     <button class="keepFlying"> keep flying</button>
-    <br>
         <button class="carnivore"> carnivore</button>
-        <br>
     <button class="herbivore"> herbivore</button>
-    <br>
             <button class="keepWandering"> keep wandering</button>
-        <br>
     <button class="goCave"> go inside the cave</button>
-    <br>
     <button class="yes2"> yes</button>
-    <br>
     <button class="no2"> no</button>
-    <br>
     <button class="takeEggs"> take the eggs</button>
-    <br>
     <button class="wait"> wait to see if the parents are there</button>
-    <br>
     <button class="yes3"> yes</button>
-    <br>
     <button class="no3"> no</button>
-  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> < br} />
+        <button class="restart"> restart</button>
+
+  <br> <br> 
 <h2 > &#127815</h2>
 <img class="ball" src="Untitled393_20260602152040.png" />
 </div>
+
+
+
+
+
+<div class = "miniGame1">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    #startBtn {
+        padding: 12px 24px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    #gameArea {
+        display: none;
+        margin-top: 20px;
+    }
+
+    #timer {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    #boxesContainer {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+
+    .box {
+        width: 70px;
+        height: 70px;
+        background: brown;
+        touch-action: none;
+        cursor: grab;
+        border-radius: 8px;
+    }
+
+    #target {
+        width: 220px;
+        height: 220px;
+        background: red;
+        margin: auto;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    #message {
+        margin-top: 20px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+</style>
+
+
+
+<h1>Drag the 5 Brown Boxes Into the Red Box</h1>
+
+<button id="startBtn">Start Game</button>
+
+<div id="gameArea">
+    <div id="timer">10</div>
+
+    <div id="boxesContainer">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <div id="target"></div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+const startBtn = document.getElementById("startBtn");
+const gameArea = document.getElementById("gameArea");
+const timerDisplay = document.getElementById("timer");
+const target = document.getElementById("target");
+const message = document.getElementById("message");
+
+let timeLeft = 10;
+let timer;
+let completed = 0;
+let gameRunning = false;
+
+startBtn.addEventListener("click", startGame);
+
+function startGame() {
+    startBtn.style.display = "none";
+    gameArea.style.display = "block";
+
+    timeLeft = 10;
+    completed = 0;
+    gameRunning = true;
+    message.textContent = "";
+
+    timerDisplay.textContent = timeLeft;
+
+    timer = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+
+            if (completed < 5) {
+                gameRunning = false;
+                message.textContent = "Sorry Incomplete";
+                message.style.color = "red";
+            }
+        }
+    }, 1000);
+
+    initializeDragging();
+}
+
+function initializeDragging() {
+    document.querySelectorAll(".box").forEach(box => {
+
+        if (box.dataset.initialized) return;
+        box.dataset.initialized = true;
+
+        let offsetX = 0;
+        let offsetY = 0;
+
+        box.addEventListener("pointerdown", (e) => {
+            if (!gameRunning || box.dataset.done) return;
+
+            e.preventDefault();
+
+            const rect = box.getBoundingClientRect();
+
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+
+            box.style.position = "fixed";
+            box.style.zIndex = "1000";
+
+            function moveHandler(ev) {
+                box.style.left = (ev.clientX - offsetX) + "px";
+                box.style.top = (ev.clientY - offsetY) + "px";
+            }
+
+            function upHandler() {
+                document.removeEventListener("pointermove", moveHandler);
+                document.removeEventListener("pointerup", upHandler);
+
+                const boxRect = box.getBoundingClientRect();
+                const targetRect = target.getBoundingClientRect();
+
+                const inside =
+                    boxRect.left > targetRect.left &&
+                    boxRect.right < targetRect.right &&
+                    boxRect.top > targetRect.top &&
+                    boxRect.bottom < targetRect.bottom;
+
+                if (inside) {
+                    box.dataset.done = "true";
+                    box.style.background = "#654321";
+                    box.style.pointerEvents = "none";
+
+                    target.appendChild(box);
+
+                    box.style.position = "absolute";
+                    box.style.left =
+                        Math.random() * (target.clientWidth - 70) + "px";
+                    box.style.top =
+                        Math.random() * (target.clientHeight - 70) + "px";
+
+                    completed++;
+
+                    if (completed === 5) {
+                        clearInterval(timer);
+                        gameRunning = false;
+                        message.textContent = "You Win!";
+                        message.style.color = "green";
+                        winButton.style.display ="block";
+                    }
+                }
+            }
+
+            document.addEventListener("pointermove", moveHandler);
+            document.addEventListener("pointerup", upHandler);
+        });
+    });
+}
+</script>
+</div>
+
+
+
+
+
+
+<div class="miniGame2">
+<style>
+  #startBtn2, #restartBtn2 {
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  #gameArea2 {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    border: 2px solid #333;
+    overflow: hidden;
+    background: #eef;
+    touch-action: none;
+  }
+
+  #timer2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  .circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: dodgerblue;
+    position: absolute;
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  #message2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+</style>
+
+<h1>Click All Circles!</h1>
+
+<button id="startBtn2">Start Game</button>
+<button id="restartBtn2" style="display:none;">Restart</button>
+
+<div id="timer2">20</div>
+<div id="gameArea2"></div>
+<div id="message2"></div>
+
+<script>
+(() => {
+  const startBtn2 = document.getElementById("startBtn2");
+  const restartBtn2 = document.getElementById("restartBtn2");
+  const gameArea2 = document.getElementById("gameArea2");
+  const timer2 = document.getElementById("timer2");
+  const message2 = document.getElementById("message2");
+
+  let circles = [];
+  let velocities = [];
+  let timeLeft2 = 20;
+  let timerInterval2;
+  let animationId;
+  let gameRunning2 = false;
+
+  startBtn2.addEventListener("click", startGame2);
+  restartBtn2.addEventListener("click", restartGame2);
+
+  function startGame2() {
+    startBtn2.style.display = "none";
+    restartBtn2.style.display = "none";
+
+    gameArea2.style.display = "block";
+    message2.textContent = "";
+
+    resetGame2();
+    runGame2();
+  }
+
+  function restartGame2() {
+    resetGame2();
+    runGame2();
+  }
+
+  function resetGame2() {
+    clearInterval(timerInterval2);
+    cancelAnimationFrame(animationId);
+
+    timeLeft2 = 20;
+    timer2.textContent = timeLeft2;
+
+    gameRunning2 = true;
+
+    gameArea2.innerHTML = "";
+    circles = [];
+    velocities = [];
+
+    for (let i = 0; i < 5; i++) {
+      const c = document.createElement("div");
+      c.classList.add("circle");
+
+      const x = Math.random() * (gameArea2.clientWidth - 60);
+      const y = Math.random() * (gameArea2.clientHeight - 60);
+
+      c.style.left = x + "px";
+      c.style.top = y + "px";
+
+      gameArea2.appendChild(c);
+      circles.push(c);
+
+      velocities.push({
+        vx: (Math.random() * 4 + 2) * (Math.random() < 0.5 ? -1 : 1),
+        vy: (Math.random() * 4 + 2) * (Math.random() < 0.5 ? -1 : 1)
+      });
+
+      c.addEventListener("pointerdown", () => {
+        if (!gameRunning2) return;
+
+        const index = circles.indexOf(c);
+        if (index > -1) {
+          circles.splice(index, 1);
+          velocities.splice(index, 1);
+        }
+
+        c.remove();
+
+        if (circles.length === 0) {
+          endGame2(true);
+        }
+      });
+    }
+  }
+
+  function runGame2() {
+    timerInterval2 = setInterval(() => {
+      timeLeft2--;
+      timer2.textContent = timeLeft2;
+
+      if (timeLeft2 <= 0) {
+        endGame2(false);
+      }
+    }, 1000);
+
+    animateCircles();
+  }
+
+  function animateCircles() {
+    const w = gameArea2.clientWidth;
+    const h = gameArea2.clientHeight;
+
+    circles.forEach((c, i) => {
+      let x = parseFloat(c.style.left);
+      let y = parseFloat(c.style.top);
+
+      x += velocities[i].vx;
+      y += velocities[i].vy;
+
+      if (x <= 0 || x >= w - 60) velocities[i].vx *= -1;
+      if (y <= 0 || y >= h - 60) velocities[i].vy *= -1;
+
+      c.style.left = x + "px";
+      c.style.top = y + "px";
+    });
+
+    if (gameRunning2) {
+      animationId = requestAnimationFrame(animateCircles);
+    }
+  }
+
+  function endGame2(win) {
+    gameRunning2 = false;
+    clearInterval(timerInterval2);
+    cancelAnimationFrame(animationId);
+
+    restartBtn2.style.display = "inline-block";
+
+    if (win) {
+      message2.textContent = "You Win!";
+      message2.style.color = "green";
+          youWinButton2.style.display ="block";
+
+    } else {
+      message2.textContent = "Time's up! You Lose!";
+      message2.style.color = "red";
+    }
+  }
+})();
+</script>
+</div>
+<div class="miniGame3">
+<style>
+  #startBtn3, #restartBtn3 {
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  #gameArea3 {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  #timer3 {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  #input3 {
+    padding: 10px;
+    font-size: 18px;
+    width: 250px;
+    text-align: center;
+  }
+
+  #message3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+</style>
+
+<h1>Type the Word pterodactyl as fast as you can!</h1>
+
+<button id="startBtn3">Start Game</button>
+<button id="restartBtn3" style="display:none;">Restart</button>
+
+<div id="gameArea3">
+  <div id="timer3">5</div>
+
+  <p>Type this word:</p>
+  <h2>pterodactyl</h2>
+
+  <input id="input3" type="text" placeholder="Type here..." />
+
+  <div id="message3"></div>
+</div>
+
+<script>
+(() => {
+  const startBtn3 = document.getElementById("startBtn3");
+  const restartBtn3 = document.getElementById("restartBtn3");
+  const gameArea3 = document.getElementById("gameArea3");
+  const timer3 = document.getElementById("timer3");
+  const input3 = document.getElementById("input3");
+  const message3 = document.getElementById("message3");
+
+  let timeLeft3 = 5;
+  let timerInterval3;
+  let gameRunning3 = false;
+
+  const targetWord = "pterodactyl";
+
+  startBtn3.addEventListener("click", startGame3);
+  restartBtn3.addEventListener("click", restartGame3);
+
+  function startGame3() {
+    startBtn3.style.display = "none";
+    restartBtn3.style.display = "none";
+
+    gameArea3.style.display = "block";
+    message3.textContent = "";
+
+    resetGame3();
+  }
+
+  function restartGame3() {
+    resetGame3();
+  }
+
+  function resetGame3() {
+    clearInterval(timerInterval3);
+
+    timeLeft3 = 5;
+    timer3.textContent = timeLeft3;
+
+    input3.value = "";
+    input3.disabled = false;
+    input3.focus();
+
+    gameRunning3 = true;
+
+    timerInterval3 = setInterval(() => {
+      timeLeft3--;
+      timer3.textContent = timeLeft3;
+
+      if (timeLeft3 <= 0) {
+        endGame3(false);
+      }
+    }, 1000);
+  }
+
+  input3.addEventListener("input", () => {
+    if (!gameRunning3) return;
+
+    if (input3.value.trim().toLowerCase() === targetWord) {
+      endGame3(true);
+    }
+  });
+
+  function endGame3(win) {
+    gameRunning3 = false;
+    clearInterval(timerInterval3);
+    input3.disabled = true;
+
+    restartBtn3.style.display = "inline-block";
+
+    if (win) {
+      message3.textContent = "You Win!";
+      message3.style.color = "green";
+        youWinButton3.style.display ="block";
+    } else {
+      message3.textContent = "Too slow! You Lose!";
+      message3.style.color = "red";
+    }
+  }
+})();
+</script>
+</div>
+
 </body>
 </html>

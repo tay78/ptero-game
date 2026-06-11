@@ -1,5 +1,12 @@
 // html button elements
-
+let miniGame1 = document.querySelector('.miniGame1');
+miniGame1.style.display ="none";
+let miniGame2 = document.querySelector('.miniGame2');
+miniGame2.style.display ="none";
+let miniGame3 = document.querySelector('.miniGame3');
+miniGame3.style.display ="none";
+winButton = document.querySelector('.win');
+winButton.style.display ="none";
 let  exploreButton = document.querySelector('.explore-button');
 let headButton = document.querySelector('.head-button');
 let restartButton = document.querySelector('.restart');
@@ -10,6 +17,8 @@ let falseButton = document.querySelector('.false');
 falseButton.style.display ="none";
 let herbivoreButton = document.querySelector('.herbivore');
 herbivoreButton.style.display ="none";
+let collapseButton = document.querySelector('.collapse');
+collapseButton.style.display ="none";
 let carnivoreButton = document.querySelector('.carnivore');
 carnivoreButton.style.display ="none";
 yesButton.style.display ="none";
@@ -31,6 +40,8 @@ yes2Button.style.display ="none";
 let no2Button = document.querySelector('.no2');
 no2Button.style.display ="none";
 let move = false;
+let youWinButton3 = document.querySelector('.youWin3');
+youWinButton3.style.display ="none";
 let foodTime = false;
 // html images elements
 let start = document.querySelector('.startSubway');
@@ -65,12 +76,14 @@ let choiceA9image = document.querySelector('.choiceA9image');
     choiceA9image.style.display ="none";
 let choiceA10image = document.querySelector('.choiceA10image');
     choiceA10image.style.display ="none";
+    let youWinButton2 = document.querySelector('.youWin2');
+    youWinButton2.style.display ="none";
 
 headButton.addEventListener('click', function() {
     restartButton.style.display="none";
     foodTime=true;
     text.innerHTML = "Pterodactyls were the first flying verterbrates.";
- restartButton.style.display="none";
+ restartButton.style.display="block";
  yesButton.style.display="none";
  noButton.style.display="none";
  trueButton.style.display="block";
@@ -88,15 +101,23 @@ yesButton.style.display="none";
 noButton.style.display="none";
 yes2Button.style.display ="none";
 no2Button.style.display ="none";
+youWinButton2.style.display ="none";
+youWinButton3.style.display ="none";
+winButton.style.display ="none";
+miniGame1.style.display ="none";
+miniGame2.style.display ="none";
+miniGame3.style.display ="none";
 yes3Button.style.display ="none";
 no3Button.style.display ="none";
     lake.style.display ="none";
     ground.style.display ="none";
     leaves.style.display ="none";
-     veloceraptor.style.display ="none";
+     velociraptor.style.display ="none";
     bugs.style.display ="none";
+    collapseButton.style.display ="none";
     eggs.style.display ="none";
     fish.style.display ="none";
+    keepFlying.style.display ="none";
     cave.style.display ="none";
     choiceA8image.style.display ="none";
     choiceA9image.style.display ="none";
@@ -106,6 +127,8 @@ waitButton.style.display="none";
 keepWanderingButton.style.display="none";
 trueButton.style.display ="none";
 falseButton.style.display ="none";
+carnivoreButton.style.display = "none";
+herbivoreButton.style.display = "none";
 exploreButton.style.display="block";
 goCaveButton.style.display ="none";
 headButton.style.display="block";
@@ -113,13 +136,12 @@ headButton.style.display="block";
 });
 trueButton.addEventListener('click', function(){
     restartButton.style.display="block";
-    choiceA3image.style.display ="none";
+    choiceA10image.style.display ="none";
     headButton.style.display ="none";
     trueButton.style.display ="none";
-    falseBButton.style.display ="none";
-    choiceA10image.style.display ="none";
+    falseButton.style.display ="none";
     text.innerHTML = "You fly above from nest and see a nearby lake covered with foliage, animals and fish. Click on the lake to stop and eat or keep flying"
-   keepFlying.style.display ="none";
+   keepFlying.style.display ="block";
     lake.style.display ="block";
 
 });
@@ -169,24 +191,37 @@ keepFlying.addEventListener('click', function(){
 
 lake.addEventListener('click', function(){
     restartButton.style.display="block";
-    choiceAimage.style.display ="none";
-    choiceA6image.style.display ="none";
     keepFlying.style.display ="none";
     text.innerHTML = "you make it to the lake now you have to find something to eat are pterodactyls carnivores or herbivores"
     carnivoreButton.style.display ="block";
     herbivoreButton.style.display ="block";
-    choiceA9image.style.display ="block";
 });
 
 carnivoreButton.addEventListener('click', function(){
     restartButton.style.display="block";
     choiceA9image.style.display ="none";
     lake.style.display ="none";
+    miniGame2.style.display ="block";
+     yesButton.style.display ="none";
+    noButton.style.display ="none";
+    choiceA10image.style.display ="none";
     carnivoreButton.style.display ="none";
     herbivoreButton.style.display ="none";
-    text.innerHTML = "you are correct and dive down grabbing 3 fish to eat satisfying your hunger and making it another day"
+    text.innerHTML = "you are correct scroll all the way down and read the minigame instructions to collect the fish in your mouth as they swim around"
 });
-
+youWinButton2.addEventListener('click', function(){
+    restartButton.style.display="block";
+    choiceA9image.style.display ="none";
+    lake.style.display ="none";
+    miniGame2.style.display ="none";
+     yesButton.style.display ="none";
+    noButton.style.display ="none";
+    choiceA10image.style.display ="none";
+    youWinButton2.style.display ="none";
+    carnivoreButton.style.display ="none";
+    herbivoreButton.style.display ="none";
+    text.innerHTML = "You dive down grabbing 5 fish to eat satisfying your hunger and making it another day"
+});
 herbivoreButton.addEventListener('click', function(){
     restartButton.style.display="block";
     choiceA9image.style.display ="none";
@@ -210,7 +245,7 @@ headButton.style.display="none";
     cave.style.display ="block";
 });
 goCaveButton.addEventListener("click", function(){
-    restartButton.style.display="none";
+restartButton.style.display = "block";
     start.style.display = "none";
     exploreButton.style.display="none";
 cave.style.display="none";
@@ -222,15 +257,37 @@ no2Button.style.display ="block";
     bugs.style.display ="block";
 });
 yes2Button.addEventListener('click', function(){
-
+text.innerHTML = "scroll all the way down and read the minigame instructions to collect the bugs in your mouth before they all scurry away"
+restartButton.style.display="block";
+miniGame1.style.display ="block";
+keepWanderingButton.style.display ="none";
+yes2Button.style.display ="none";
+no2Button.style.display ="none";
+cave.style.display ="none";
+bugs.style.display ="block";
+});
+winButton.addEventListener('click', function(){
 text.innerHTML = "you eat the bugs and they satisfy your hunger for now"
+restartButton.style.display="block";
+goCaveButton.style.display ="none";
+winButton.style.display ="none";
+keepWanderingButton.style.display ="none";
+yes2Button.style.display ="none";
+no2Button.style.display ="none";
+cave.style.display ="none";
+bugs.style.display ="block";
+});
+no2Button.addEventListener('click', function(){
+
+text.innerHTML = "you refuse to eat the bugs even though they were previously you favorite snack and venture farther into the cave as you do you a storm comes collaping the exit crushing you."
 restartButton.style.display="block";
 goCaveButton.style.display ="none";
 keepWanderingButton.style.display ="none";
 yes2Button.style.display ="none";
 no2Button.style.display ="none";
 cave.style.display ="none";
-bugs.style.display ="block";
+bugs.style.display ="none";
+collapseButton.style.display ="block";
 });
 keepWanderingButton.addEventListener("click", function(){
     restartButton.style.display="block";
@@ -248,7 +305,7 @@ takeEggsButton.addEventListener('click', function(){
     takeEggsButton.style.display = "none";
     exploreButton.style.display="none";
 headButton.style.display="none";
-    text.innerHTML = "you take the eggs and quickly run but you suddenly hear a veloceraptor screeching behind you. Are Velociraptors fast?"
+    text.innerHTML = "you take the eggs and quickly run but you suddenly hear a velociraptor screeching behind you. Are Velociraptors fast?"
     yes3Button.style.display ="block";
     eggs.style.display ="none";
     no3Button.style.display ="block";
@@ -271,6 +328,19 @@ yes3Button.addEventListener('click', function(){
     restartButton.style.display="block";
     velociraptor.style.display = "none";
     exploreButton.style.display="none";
+headButton.style.display="none";
+    text.innerHTML = "you you need to fly away as fast as you can spell pterodactyl to get away from the velociraptor reach and get back to your nest safely with the eggs"
+miniGame3.style.display ="block";
+    yes3Button.style.display ="none";
+     no3Button.style.display ="none";
+     velociraptor.style.display ="none";
+});
+youWinButton3.addEventListener('click', function(){
+    restartButton.style.display="block";
+    velociraptor.style.display = "none";
+    exploreButton.style.display="none";
+    miniGame3.style.display ="none";
+    youWinButton3.style.display ="none";
 headButton.style.display="none";
     text.innerHTML = "you quickly fly away as fast as you can from the velociraptor reach and get back to your nest safely with the eggs"
     yes3Button.style.display ="none";
